@@ -25,6 +25,9 @@ public class NewJFrame extends javax.swing.JFrame {
         connectDatabase();
         showTed();
         showMusteri();
+        showbuyTable();
+        showStokTable();
+        showSiparis();
     }
 
     /**
@@ -78,7 +81,7 @@ public class NewJFrame extends javax.swing.JFrame {
         uPanel = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jScrollPane25 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        uStokTable = new javax.swing.JTable();
         jLabel21 = new javax.swing.JLabel();
         jScrollPane26 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
@@ -88,7 +91,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         uSatinAlPanel = new javax.swing.JPanel();
         jScrollPane22 = new javax.swing.JScrollPane();
-        buyTable = new javax.swing.JTable();
+        hamAlTable = new javax.swing.JTable();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane23 = new javax.swing.JScrollPane();
@@ -96,6 +99,9 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane24 = new javax.swing.JScrollPane();
         maliyetPane = new javax.swing.JTextPane();
         satinAlButton = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        jScrollPane27 = new javax.swing.JScrollPane();
+        jTextPane3 = new javax.swing.JTextPane();
         mPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         customerTable = new javax.swing.JTable();
@@ -115,8 +121,8 @@ public class NewJFrame extends javax.swing.JFrame {
         mProductPane = new javax.swing.JTextPane();
         jScrollPane18 = new javax.swing.JScrollPane();
         mQuanPane = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        mEkleBtn = new javax.swing.JButton();
+        adresGuncButton = new javax.swing.JButton();
         sPanel = new javax.swing.JPanel();
         jScrollPane19 = new javax.swing.JScrollPane();
         siparisTable = new javax.swing.JTable();
@@ -249,23 +255,19 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                     .addComponent(citypane, 0, 0, Short.MAX_VALUE))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(104, 104, 104)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton5)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(81, 81, 81)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tedEkleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(143, 143, 143))))
+                            .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(tedEkleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,12 +287,13 @@ public class NewJFrame extends javax.swing.JFrame {
                                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2)))
                             .addComponent(jButton5))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(tedEkleButton))
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
                                 .addGap(33, 33, 33)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel4)
@@ -300,10 +303,8 @@ public class NewJFrame extends javax.swing.JFrame {
                                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel7)))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(tedEkleButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addGap(88, 88, 88)
                                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -338,15 +339,15 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Sylfaen", 1, 20)); // NOI18N
         jLabel20.setText("Üretici Stok Durumu");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        uStokTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Bileşiğin Adi", "Miktari", "Maliyeti"
+                "Bileşiğin Adi", "Miktari"
             }
         ));
-        jScrollPane25.setViewportView(jTable1);
+        jScrollPane25.setViewportView(uStokTable);
 
         jLabel21.setFont(new java.awt.Font("Sylfaen", 1, 17)); // NOI18N
         jLabel21.setText("Bileşenleri: ");
@@ -416,8 +417,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Üretici/Satici", uPanel);
 
-        buyTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        buyTable.setModel(new javax.swing.table.DefaultTableModel(
+        hamAlTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        hamAlTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -433,19 +434,24 @@ public class NewJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane22.setViewportView(buyTable);
+        jScrollPane22.setViewportView(hamAlTable);
 
         jLabel17.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel17.setText("Tedarikçi Firma Adi: ");
 
         jLabel19.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        jLabel19.setText("Maliyet: ");
+        jLabel19.setText("Yol Maliyeti: ");
 
         jScrollPane23.setViewportView(buyTedPane);
 
         jScrollPane24.setViewportView(maliyetPane);
 
         satinAlButton.setText("Satın Al");
+
+        jLabel24.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        jLabel24.setText("Maliyet:");
+
+        jScrollPane27.setViewportView(jTextPane3);
 
         javax.swing.GroupLayout uSatinAlPanelLayout = new javax.swing.GroupLayout(uSatinAlPanel);
         uSatinAlPanel.setLayout(uSatinAlPanelLayout);
@@ -457,16 +463,20 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
                     .addGroup(uSatinAlPanelLayout.createSequentialGroup()
                         .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel19))
-                        .addGap(30, 30, 30)
-                        .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane23, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(jScrollPane24))
+                            .addGroup(uSatinAlPanelLayout.createSequentialGroup()
+                                .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel19))
+                                .addGap(30, 30, 30)
+                                .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane27)
+                                    .addComponent(jScrollPane23, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane24)))
+                            .addComponent(jLabel24))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(uSatinAlPanelLayout.createSequentialGroup()
-                .addGap(318, 318, 318)
+                .addGap(319, 319, 319)
                 .addComponent(satinAlButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -484,19 +494,23 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel19)
                     .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(107, 107, 107)
+                .addGap(48, 48, 48)
+                .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel24)
+                    .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(88, 88, 88)
                 .addComponent(satinAlButton)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Ürün Satin Al", uSatinAlPanel);
+        jTabbedPane1.addTab("Hammadde Satin Al", uSatinAlPanel);
 
         customerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Müsteri Adi", "Sehir Merkezi", "Talep Edilen Ürün", "Adet"
+                "ID", "Müsteri Adi", "Adres", "Talep Edilen Ürün", "Adet"
             }
         ));
         customerTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -507,7 +521,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane3.setViewportView(customerTable);
 
         jLabel10.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
-        jLabel10.setText("Sisteme Kayıtlı Olan Siparişler");
+        jLabel10.setText("Sisteme Kayıtlı Olan Müsteriler");
 
         jLabel11.setText("ID");
 
@@ -529,17 +543,17 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jScrollPane18.setViewportView(mQuanPane);
 
-        jButton1.setText("Müşteri Ekle");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        mEkleBtn.setText("Müşteri Ekle");
+        mEkleBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                mEkleBtnActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Müşteri Adres Güncelle");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        adresGuncButton.setText("Müşteri Adres Güncelle");
+        adresGuncButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                adresGuncButtonActionPerformed(evt);
             }
         });
 
@@ -572,8 +586,8 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane18))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(mPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(mEkleBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(adresGuncButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(125, 125, 125))
         );
         mPanelLayout.setVerticalGroup(
@@ -605,7 +619,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                                 .addComponent(jLabel13))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mPanelLayout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton1)
+                                                .addComponent(mEkleBtn)
                                                 .addGap(17, 17, 17))))
                                     .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(mPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -614,7 +628,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                         .addComponent(jLabel14))
                                     .addGroup(mPanelLayout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton3))))
+                                        .addComponent(adresGuncButton))))
                             .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
                         .addComponent(jLabel15)))
@@ -630,7 +644,15 @@ public class NewJFrame extends javax.swing.JFrame {
             new String [] {
                 "ID", "Müsteri Adi", "Sehir Merkezi", "Talep Edilen Ürün", "Adet"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, true, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         siparisTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 siparisTableMouseClicked(evt);
@@ -720,45 +742,41 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void tedEkleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tedEkleButtonActionPerformed
         // TODO add your handling code here:
-        int sonTedHammadde = 0 ;
+        int sonTedHammadde = 0;
         int uretilenHammadde = 0;
-        
+
         String uhm = productpane.getText();
-        if(uhm.equalsIgnoreCase("H")){
+        if (uhm.equalsIgnoreCase("H")) {
             uretilenHammadde = 1;
-        }
-        else if(uhm.equalsIgnoreCase("N")){
+        } else if (uhm.equalsIgnoreCase("N")) {
             uretilenHammadde = 2;
-        }
-        else if(uhm.equalsIgnoreCase("C")){
+        } else if (uhm.equalsIgnoreCase("C")) {
             uretilenHammadde = 3;
-        }
-        else if(uhm.equalsIgnoreCase("O")){
+        } else if (uhm.equalsIgnoreCase("O")) {
             uretilenHammadde = 4;
-        }
-        else if(uhm.equalsIgnoreCase("S")){
+        } else if (uhm.equalsIgnoreCase("S")) {
             uretilenHammadde = 5;
-        }
-        else if(uhm.equalsIgnoreCase("Cl")){
+        } else if (uhm.equalsIgnoreCase("Cl")) {
             uretilenHammadde = 6;
         }
-        
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
                     "root", "");
-            
+
             String q = "Select tedhammadde.ID FROM tedhammadde";
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(q);
-            while(rs.next())
+            while (rs.next()) {
                 sonTedHammadde = rs.getInt(1);
-            
+            }
+
             System.out.println(sonTedHammadde);
             statement.close();
             rs.close();
-            
+
             String insertquery = "INSERT INTO `tedarikci`(`ID`, `firmaAdi`, `ulke`, `sehir`)values(?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(insertquery);
             int tempInt = Integer.parseInt(idpane.getText());
@@ -768,12 +786,12 @@ public class NewJFrame extends javax.swing.JFrame {
             pst.setString(3, countrypane.getText());
             pst.setString(4, citypane.getSelectedItem().toString());
             pst.executeUpdate();
-            
+
             sonTedHammadde += 1;
             insertquery = "INSERT INTO `tedhammadde`(`ID`, `uretenFirmaID`, `hammaddeID`, `stok`, `fiyat`, `uretimTarihi`, `rafomru`)"
                     + " VALUES ( ?, ?, ?, ?, ?, ?, ?)";
             pst = con.prepareStatement(insertquery);
-            
+
             pst.setInt(1, sonTedHammadde);
             pst.setInt(2, uretenfirmaID);
             pst.setInt(3, uretilenHammadde);
@@ -784,10 +802,9 @@ public class NewJFrame extends javax.swing.JFrame {
             pst.setString(6, datepane.getText());
             tempInt = Integer.parseInt(lifepane.getText());
             pst.setInt(7, tempInt);
-            
 
             pst.executeUpdate();
-            DefaultTableModel tableModel = (DefaultTableModel)tedTable.getModel();
+            DefaultTableModel tableModel = (DefaultTableModel) tedTable.getModel();
             tableModel.setRowCount(0);
             showTed();
             JOptionPane.showMessageDialog(null, "Inserted successfully");
@@ -802,12 +819,9 @@ public class NewJFrame extends javax.swing.JFrame {
             lifepane.setText("");
             pricepane.setText("");
 
-        }
-        catch(SQLIntegrityConstraintViolationException ex){
+        } catch (SQLIntegrityConstraintViolationException ex) {
             JOptionPane.showMessageDialog(null, ex);
-        }
-        
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -821,7 +835,7 @@ public class NewJFrame extends javax.swing.JFrame {
         fnamepane.setText(model.getValueAt(rowCount, 1).toString());
         countrypane.setText(model.getValueAt(rowCount, 2).toString());
         String city = model.getValueAt(rowCount, 3).toString();
-        
+
         switch (city) {
             case "Ankara":
                 citypane.setSelectedIndex(0);
@@ -859,7 +873,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int rowCount = customerTable.getSelectedRow();
         TableModel model = customerTable.getModel();
-        
+
         mIdPane.setText(model.getValueAt(rowCount, 0).toString());
         mNamePane.setText(model.getValueAt(rowCount, 1).toString());
         mAdressPane.setText(model.getValueAt(rowCount, 2).toString());
@@ -868,10 +882,133 @@ public class NewJFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_customerTableMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void mEkleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mEkleBtnActionPerformed
         // TODO add your handling code here:
+        String adres = mAdressPane.getText();
+        int ym = 0;
+        boolean yd = false;
+        double km = 0;
+        int im = Integer.parseInt(mQuanPane.getText());
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        if (adres.contains("istanbul")){
+            ym = 111;
+            yd =false;
+            km = 111*0.5;
+        }
+        else if (adres.contains("ankara")){
+            ym = 342;
+            yd =false;
+            km = 342 * 0.5;
+        }
+        else if (adres.contains("eskisehir")){
+            ym = 214;
+            yd =false;
+            km = 214 * 0.5;
+        }
+        else if (adres.contains("gaziantep")){
+            ym = 1000;
+            yd =false;
+            km = 1000 * 0.5;
+        }
+        else if (adres.contains("londra")){
+            ym = 2582;
+            yd = true;
+            km = 2582;
+        }
+        else if (adres.contains("berlin")){
+            ym = 1809;
+            yd =true;
+            km = 1809;
+        }
+        else if (adres.contains("saraybosna")){
+            ym = 1008;
+            yd =true;
+            km = 1008;
+        }
+        int toplamM = im + (int)km;
+        int sfiyati = toplamM * (6/5);
+        int sonSiparis = 0;
+        int urunid = 0, urunStok = 0;
+        System.out.println(km+"->km"+im+"-"+toplamM);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
+                    "root", "");
+            
+            String query = "SELECT `ID` FROM `siparis` WHERE 1";
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while (rs.next()) {
+                sonSiparis = rs.getInt(1);
+            }
+            System.out.println(sonSiparis);
+            statement.close();
+            rs.close();
+            
+            query = "select urunler.ID from urunler where urunler.urunAd = " + "'"+mProductPane.getText()+"'";
+            statement = con.createStatement();
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
+                urunid = rs.getInt(1);
+            }
+            
+            statement.close();
+            rs.close();
+            
+            query = "select urunler.stok from urunler where urunler.ID = " + urunid;
+            statement = con.createStatement();
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
+                urunStok = rs.getInt(1);
+            }
+            
+            statement.close();
+            rs.close();
+
+            String q = "INSERT INTO `musteri`(`ID`, `musteriAdi`, `adres`) VALUES (?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(q);
+            
+            int tempInt = Integer.parseInt(mIdPane.getText());
+            pst.setInt(1, tempInt);
+            pst.setString(2, mNamePane.getText());
+            pst.setString(3, mAdressPane.getText());
+            pst.executeUpdate();
+            pst.close();
+            q = "INSERT INTO `siparis`(`ID`, `urunID`, `musteriID`, `urunAdet`,"
+                    + " `isciMaliyet`, `toplamMaliyet`, `satisFiyati`)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+            pst = con.prepareStatement(q);
+            sonSiparis+=1;
+            pst.setInt(1, sonSiparis);
+            pst.setInt(2, urunid);
+            pst.setInt(3, tempInt);
+            tempInt = Integer.parseInt(mQuanPane.getText());
+            pst.setInt(4, tempInt);
+            pst.setInt(5, im);
+            pst.setInt(6, toplamM);
+            pst.setInt(7, sfiyati);
+            pst.executeUpdate();
+            
+            q = "update urunler set urunler.stok = ? where urunler.ID = " +urunid;
+            pst = con.prepareStatement(q);
+            int stokSon = urunStok - tempInt;
+            pst.setInt(1, stokSon);
+            pst.executeUpdate();
+            
+            DefaultTableModel tableModel = (DefaultTableModel) customerTable.getModel();
+            tableModel.setRowCount(0);
+            DefaultTableModel model = (DefaultTableModel) siparisTable.getModel();
+            model.setRowCount(0);
+            
+            showSiparis();
+            showMusteri();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_mEkleBtnActionPerformed
 
     private void siparisTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siparisTableMouseClicked
         // TODO add your handling code here:
@@ -881,9 +1018,29 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void adresGuncButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adresGuncButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey", "root", "");
+            int sRow = customerTable.getSelectedRow();
+            String value = (customerTable.getModel().getValueAt(sRow, 0).toString());
+            String q = "Update musteri set musteri.adres = ? where musteri.ID =" + value;
+            
+            String yeniAdres = mAdressPane.getText();
+            System.out.println(value + yeniAdres);
+            PreparedStatement ps = con.prepareStatement(q);
+            ps.setString(1, yeniAdres);
+            ps.executeUpdate();
+            DefaultTableModel tableModel = (DefaultTableModel) customerTable.getModel();
+            tableModel.setRowCount(0);
+            showMusteri();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_adresGuncButtonActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -891,6 +1048,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) tedTable.getModel();
+        tableModel.setRowCount(0);
         showTed();
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -937,8 +1096,9 @@ public class NewJFrame extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
                     "root", "");
-            String query1 = "SELECT tedarikci.ID, tedarikci.firmaAdi, tedarikci.ulke, tedarikci.sehir, hammadde.isim, tedhammadde.stok, tedhammadde.uretimTarihi,"
-                    + " tedhammadde.rafomru, tedhammadde.fiyat FROM tedarikci, hammadde, tedhammadde WHERE tedhammadde.uretenFirmaID = tedarikci.ID AND hammadde.ID = tedhammadde.ID";
+            String query1 = "SELECT tedarikci.ID, tedarikci.firmaAdi, tedarikci.ulke, tedarikci.sehir, hammadde.isim,"
+                    + " tedhammadde.stok, tedhammadde.uretimTarihi, tedhammadde.rafomru, tedhammadde.fiyat FROM tedhammadde "
+                    + "INNER JOIN hammadde ON tedhammadde.hammaddeID = hammadde.ID INNER JOIN tedarikci ON tedhammadde.uretenFirmaID = tedarikci.ID";
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(query1);
             Ted ted;
@@ -956,6 +1116,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         return tedList;
     }
+
     public ArrayList<Musteri> musteriList() {
         ArrayList<Musteri> mList = new ArrayList<>();
         try {
@@ -963,16 +1124,14 @@ public class NewJFrame extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
                     "root", "");
-            String query1 = "SELECT siparis.ID, musteri.musteriAdi, musteri.adres, urunler.urunAd,siparis.urunAdet FROM siparis, musteri, urunler WHERE siparis.musteriID = musteri.ID AND siparis.urunID = urunler.ID";
+            String query1 = "SELECT musteri.ID, musteri.musteriAdi, musteri.adres, urunler.urunAd,siparis.urunAdet FROM siparis, musteri, urunler WHERE siparis.musteriID = musteri.ID AND siparis.urunID = urunler.ID";
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(query1);
             Musteri med;
             while (rs.next()) {
-                System.out.println(rs.getString(2));
-                med = new Musteri((1), rs.getString(2), rs.getString(3),
+                med = new Musteri(rs.getInt(1), rs.getString(2), rs.getString(3),
                         rs.getString(4), rs.getInt(5));
                 mList.add(med);
-                
             }
 
         } catch (Exception e) {
@@ -981,14 +1140,90 @@ public class NewJFrame extends javax.swing.JFrame {
         return mList;
     }
 
+    public ArrayList<HamSatinAl> buyList() {
+        ArrayList<HamSatinAl> hList = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
+                    "root", "");
+            String query = "SELECT tedarikci.firmaAdi, hammadde.isim, tedhammadde.stok,"
+                    + " tedhammadde.fiyat FROM tedhammadde INNER JOIN hammadde"
+                    + " ON tedhammadde.hammaddeID = hammadde.ID INNER JOIN tedarikci ON tedhammadde.uretenFirmaID = tedarikci.ID";
+
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            HamSatinAl ham;
+            while (rs.next()) {
+                ham = new HamSatinAl(rs.getString(1), rs.getString(2),
+                        rs.getInt(3), rs.getInt(4));
+                System.out.println(rs.getString(1) + " - - " + rs.getString(2) + "+ + " + rs.getInt(3) + "- - -" + rs.getInt(4));
+                hList.add(ham);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return hList;
+    }
+
+    public ArrayList<ureticiStok> stokList() {
+        ArrayList<ureticiStok> uList = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
+                    "root", "");
+            String query = "SELECT `urunler`.`urunAd`, `urunler`.`stok` FROM `urunler`";
+
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            ureticiStok urun;
+            while (rs.next()) {
+                urun = new ureticiStok(rs.getString(1), rs.getInt(2));
+                System.out.println(rs.getString(1) + " - - " + rs.getInt(2));
+                uList.add(urun);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return uList;
+
+    }
+
+    public void showStokTable() {
+        ArrayList<ureticiStok> usList = stokList();
+        DefaultTableModel tableModel = (DefaultTableModel) uStokTable.getModel();
+
+        Object[] row = new Object[2];
+        for (int i = 0; i < usList.size(); i++) {
+            row[0] = usList.get(i).getBilesik();
+            row[1] = usList.get(i).getStok();
+            tableModel.addRow(row);
+        }
+    }
+
+    public void showbuyTable() {
+        ArrayList<HamSatinAl> hamList = buyList();
+        DefaultTableModel tableModel = (DefaultTableModel) hamAlTable.getModel();
+
+        Object[] row = new Object[4];
+        for (int i = 0; i < hamList.size(); i++) {
+            row[0] = hamList.get(i).getFirmaAdi();
+            row[1] = hamList.get(i).getHamMadde();
+            row[2] = hamList.get(i).getStok();
+            row[3] = hamList.get(i).getFiyat();
+            tableModel.addRow(row);
+        }
+    }
+
     public void showTed() {
-/*
+        /*
         tedarikci.ID, tedarikci.firmaAdi, tedarikci.ulke, tedarikci.sehir, hammadde.isim, tedhammadde.stok, tedhammadde.uretimTarihi,"
                     + " tedhammadde.rafomru, tedhammadde.fiyat
-        */
+         */
         ArrayList<Ted> tedList = tedList();
         DefaultTableModel tableModel = (DefaultTableModel) tedTable.getModel();
-        
+
         Object[] row = new Object[9];
         //"ID  -CName  -Contry  -Product  -Quantity  -PDate  -ShelfLife  -SaleP"
         for (int i = 0; i < tedList.size(); i++) {
@@ -1005,10 +1240,11 @@ public class NewJFrame extends javax.swing.JFrame {
         }
 
     }
+
     public void showMusteri() {
         ArrayList<Musteri> mList = musteriList();
         DefaultTableModel tableModel = (DefaultTableModel) customerTable.getModel();
-        
+
         Object[] row = new Object[5];
         for (int i = 0; i < mList.size(); i++) {
             row[0] = mList.get(i).getId();
@@ -1018,7 +1254,13 @@ public class NewJFrame extends javax.swing.JFrame {
             row[4] = mList.get(i).getQuanitity();
             tableModel.addRow(row);
         }
-        tableModel = (DefaultTableModel) siparisTable.getModel();
+        
+    }
+    public void showSiparis () {
+        ArrayList<Musteri> mList = musteriList();
+        DefaultTableModel tableModel = (DefaultTableModel) siparisTable.getModel();
+        
+        Object[] row = new Object[5];
         for (int i = 0; i < mList.size(); i++) {
             row[0] = mList.get(i).getId();
             row[1] = mList.get(i).getMname();
@@ -1053,19 +1295,17 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable buyTable;
+    private javax.swing.JButton adresGuncButton;
     private javax.swing.JTextPane buyTedPane;
     private javax.swing.JComboBox<String> citypane;
     private javax.swing.JTextPane countrypane;
     private javax.swing.JTable customerTable;
     private javax.swing.JTextPane datepane;
     private javax.swing.JTextPane fnamepane;
+    private javax.swing.JTable hamAlTable;
     private javax.swing.JTextPane idpane;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -1084,6 +1324,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1111,6 +1352,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane24;
     private javax.swing.JScrollPane jScrollPane25;
     private javax.swing.JScrollPane jScrollPane26;
+    private javax.swing.JScrollPane jScrollPane27;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -1119,16 +1361,17 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextPane jTextPane4;
     private javax.swing.JTextPane jTextPane7;
     private javax.swing.JTextPane jTextPane9;
     private javax.swing.JTextPane karPane;
     private javax.swing.JTextPane lifepane;
     private javax.swing.JTextPane mAdressPane;
+    private javax.swing.JButton mEkleBtn;
     private javax.swing.JTextPane mIdPane;
     private javax.swing.JTextPane mNamePane;
     private javax.swing.JPanel mPanel;
@@ -1146,9 +1389,62 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTable tedTable;
     private javax.swing.JPanel uPanel;
     private javax.swing.JPanel uSatinAlPanel;
+    private javax.swing.JTable uStokTable;
     // End of variables declaration//GEN-END:variables
 }
+
+class ureticiStok {
+
+    private String bilesik;
+    private int stok;
+
+    public ureticiStok(String bilesik, int stok) {
+        this.bilesik = bilesik;
+        this.stok = stok;
+    }
+
+    public String getBilesik() {
+        return bilesik;
+    }
+
+    public int getStok() {
+        return stok;
+    }
+
+}
+
+class HamSatinAl {
+
+    private String firmaAdi, hamMadde;
+    private int stok, fiyat;
+
+    public HamSatinAl(String firmaAdi, String hamMadde, int stok, int fiyat) {
+        this.firmaAdi = firmaAdi;
+        this.hamMadde = hamMadde;
+        this.stok = stok;
+        this.fiyat = fiyat;
+    }
+
+    public String getFirmaAdi() {
+        return firmaAdi;
+    }
+
+    public String getHamMadde() {
+        return hamMadde;
+    }
+
+    public int getStok() {
+        return stok;
+    }
+
+    public int getFiyat() {
+        return fiyat;
+    }
+
+}
+
 class Musteri {
+
     private int id, quanitity;
     private String mname, mcity, mproduct;
 
@@ -1179,8 +1475,9 @@ class Musteri {
     public String getMproduct() {
         return mproduct;
     }
-    
+
 }
+
 class Ted {
 
     private int id, miktar, raf, satisFiyati;
