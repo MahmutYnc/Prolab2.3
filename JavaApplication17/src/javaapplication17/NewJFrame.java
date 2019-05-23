@@ -5,7 +5,9 @@
  */
 package javaapplication17;
 
+import java.awt.HeadlessException;
 import java.sql.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,12 +22,14 @@ public class NewJFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    int stokVarmi = 1;
+
     public NewJFrame() {
         initComponents();
         connectDatabase();
         showTed();
         showMusteri();
-        showbuyTable();
+//        showbuyTable();
         showStokTable();
         showSiparis();
     }
@@ -78,30 +82,20 @@ public class NewJFrame extends javax.swing.JFrame {
         pricepane = new javax.swing.JTextPane();
         citypane = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        jScrollPane29 = new javax.swing.JScrollPane();
+        yolMaliyeti = new javax.swing.JTextPane();
         uPanel = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jScrollPane25 = new javax.swing.JScrollPane();
         uStokTable = new javax.swing.JTable();
-        jLabel21 = new javax.swing.JLabel();
-        jScrollPane26 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        uSatinAlPanel = new javax.swing.JPanel();
-        jScrollPane22 = new javax.swing.JScrollPane();
-        hamAlTable = new javax.swing.JTable();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jScrollPane23 = new javax.swing.JScrollPane();
-        buyTedPane = new javax.swing.JTextPane();
-        jScrollPane24 = new javax.swing.JScrollPane();
-        maliyetPane = new javax.swing.JTextPane();
-        satinAlButton = new javax.swing.JButton();
-        jLabel24 = new javax.swing.JLabel();
-        jScrollPane27 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
+        olusturBilesen = new javax.swing.JTextField();
+        olusturButton = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        jScrollPane28 = new javax.swing.JScrollPane();
+        olusturMiktar = new javax.swing.JTextPane();
         mPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         customerTable = new javax.swing.JTable();
@@ -131,8 +125,7 @@ public class NewJFrame extends javax.swing.JFrame {
         karPane = new javax.swing.JTextPane();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane21 = new javax.swing.JScrollPane();
-        jTextPane9 = new javax.swing.JTextPane();
-        jButton2 = new javax.swing.JButton();
+        karPane2 = new javax.swing.JTextPane();
 
         jScrollPane5.setViewportView(jTextPane4);
 
@@ -224,6 +217,12 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel26.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        jLabel26.setText("Kargo Maliyeti:");
+
+        yolMaliyeti.setEditable(false);
+        jScrollPane29.setViewportView(yolMaliyeti);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -257,16 +256,21 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(citypane, 0, 0, Short.MAX_VALUE))
                 .addGap(104, 104, 104)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton5)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(81, 81, 81)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(tedEkleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton5)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(81, 81, 81)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tedEkleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addGap(49, 49, 49)
+                        .addComponent(jScrollPane29, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -316,11 +320,18 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel8))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
-                    .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addComponent(jLabel26))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(68, 68, 68))
         );
 
         javax.swing.GroupLayout tPanelLayout = new javax.swing.GroupLayout(tPanel);
@@ -349,11 +360,6 @@ public class NewJFrame extends javax.swing.JFrame {
         ));
         jScrollPane25.setViewportView(uStokTable);
 
-        jLabel21.setFont(new java.awt.Font("Sylfaen", 1, 17)); // NOI18N
-        jLabel21.setText("Bileşenleri: ");
-
-        jScrollPane26.setViewportView(jTextPane1);
-
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(204, 0, 0));
         jLabel22.setText("Yeni Bileşen Oluştur");
@@ -362,13 +368,23 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(0, 51, 153));
         jLabel23.setText("Örnek Oluşturma Şekli:      C.1-O.2 / H.2-O.1 / H.1-Cl.1");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        olusturBilesen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                olusturBilesenActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Oluştur");
+        olusturButton.setText("Oluştur");
+        olusturButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                olusturButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        jLabel25.setText("Mikatarini Giriniz: ");
+
+        jScrollPane28.setViewportView(olusturMiktar);
 
         javax.swing.GroupLayout uPanelLayout = new javax.swing.GroupLayout(uPanel);
         uPanel.setLayout(uPanelLayout);
@@ -377,21 +393,23 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(uPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(uPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane25)
+                    .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
                     .addGroup(uPanelLayout.createSequentialGroup()
                         .addGroup(uPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel20)
                             .addGroup(uPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addGap(45, 45, 45)
-                                .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel25)
+                                .addGap(48, 48, 48)
+                                .addComponent(jScrollPane28))
+                            .addComponent(jLabel20)
                             .addComponent(jLabel22)
                             .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1))
-                        .addGap(74, 74, 74)
-                        .addComponent(jButton4)
-                        .addGap(0, 116, Short.MAX_VALUE)))
+                            .addComponent(olusturBilesen))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, uPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(olusturButton)
+                .addGap(107, 107, 107))
         );
         uPanelLayout.setVerticalGroup(
             uPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,110 +418,23 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(84, 84, 84)
                 .addGroup(uPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel21)
-                    .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(jLabel22)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel23)
-                .addGap(27, 27, 27)
-                .addGroup(uPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
-                .addContainerGap(335, Short.MAX_VALUE))
+                    .addGroup(uPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel23)
+                        .addGap(28, 28, 28)
+                        .addComponent(olusturBilesen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(olusturButton)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel25))
+                    .addComponent(jScrollPane28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Üretici/Satici", uPanel);
-
-        hamAlTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        hamAlTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Tedarikçi Firma", "Ürün", "Ürün Stok", "Satış Fiyati"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane22.setViewportView(hamAlTable);
-
-        jLabel17.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        jLabel17.setText("Tedarikçi Firma Adi: ");
-
-        jLabel19.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        jLabel19.setText("Yol Maliyeti: ");
-
-        jScrollPane23.setViewportView(buyTedPane);
-
-        jScrollPane24.setViewportView(maliyetPane);
-
-        satinAlButton.setText("Satın Al");
-
-        jLabel24.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        jLabel24.setText("Maliyet:");
-
-        jScrollPane27.setViewportView(jTextPane3);
-
-        javax.swing.GroupLayout uSatinAlPanelLayout = new javax.swing.GroupLayout(uSatinAlPanel);
-        uSatinAlPanel.setLayout(uSatinAlPanelLayout);
-        uSatinAlPanelLayout.setHorizontalGroup(
-            uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(uSatinAlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
-                    .addGroup(uSatinAlPanelLayout.createSequentialGroup()
-                        .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(uSatinAlPanelLayout.createSequentialGroup()
-                                .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel19))
-                                .addGap(30, 30, 30)
-                                .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane27)
-                                    .addComponent(jScrollPane23, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane24)))
-                            .addComponent(jLabel24))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(uSatinAlPanelLayout.createSequentialGroup()
-                .addGap(319, 319, 319)
-                .addComponent(satinAlButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        uSatinAlPanelLayout.setVerticalGroup(
-            uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(uSatinAlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(uSatinAlPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel17))
-                    .addComponent(jScrollPane23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel19)
-                    .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addGroup(uSatinAlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel24)
-                    .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(88, 88, 88)
-                .addComponent(satinAlButton)
-                .addContainerGap(202, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Hammadde Satin Al", uSatinAlPanel);
 
         customerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -663,20 +594,14 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel16.setText("Seçili olan siparişten elde edilen kar: ");
 
+        karPane.setEditable(false);
         jScrollPane20.setViewportView(karPane);
 
         jLabel18.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel18.setText("Kar Oranı (%): ");
 
-        jScrollPane21.setViewportView(jTextPane9);
-
-        jButton2.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
-        jButton2.setText("Hesapla");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        karPane2.setEditable(false);
+        jScrollPane21.setViewportView(karPane2);
 
         javax.swing.GroupLayout sPanelLayout = new javax.swing.GroupLayout(sPanel);
         sPanel.setLayout(sPanelLayout);
@@ -690,21 +615,16 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGap(35, 35, 35))
                     .addGroup(sPanelLayout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addGroup(sPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(sPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(sPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel18)
                                 .addGap(133, 133, 133)
-                                .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jScrollPane21))
                             .addGroup(sPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-            .addGroup(sPanelLayout.createSequentialGroup()
-                .addGap(304, 304, 304)
-                .addComponent(jButton2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         sPanelLayout.setVerticalGroup(
             sPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -719,9 +639,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(sPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel18)
                     .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(121, 121, 121)
-                .addComponent(jButton2)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Siparişler", sPanel);
@@ -739,6 +657,311 @@ public class NewJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void siparisTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siparisTableMouseClicked
+        int rowCount = siparisTable.getSelectedRow();
+        TableModel model = siparisTable.getModel();
+        int toplamMaliyet = 0, satisFiyati = 0; 
+        int mustid = Integer.parseInt(model.getValueAt(rowCount, 0).toString());
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
+                "root", "");
+
+            String q = "Select toplamMaliyet, satisFiyati FROM siparis Where siparis.musteriID = "+ mustid;
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(q);
+            while (rs.next()) {
+                toplamMaliyet = rs.getInt(1);
+                satisFiyati = rs.getInt(2);
+            }
+            statement.close();
+            rs.close();
+            String temp;
+            double kar = (double)(((double)satisFiyati - (double)toplamMaliyet) / toplamMaliyet) * 100 ;
+            NumberFormat nf =NumberFormat.getInstance(); // nf adında bir NumberFormat tanımladık. Siz başka birşey diyebilirsiniz.
+
+        nf.setMaximumFractionDigits(2);      // Burada virgülden sonra maksimum 2 karakter olacağı belirtiliyor.
+
+        nf.setMinimumFractionDigits(2);      // Burada virgülden sonra minimum 2 karakter olacağı belirtiliyor.
+
+        String s= nf.format(kar);          // nf.format(x)  string bir değer döndüdür sonuc s değişkenine atanır. x ise virgüllü sayımızdır.   
+            temp = ""+(satisFiyati - toplamMaliyet);
+            karPane.setText(temp); 
+            temp = ""+ kar;
+            karPane2.setText(s);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_siparisTableMouseClicked
+
+    private void adresGuncButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adresGuncButtonActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey", "root", "");
+            int sRow = customerTable.getSelectedRow();
+            String value = (customerTable.getModel().getValueAt(sRow, 0).toString());
+            String q = "Update musteri set musteri.adres = ? where musteri.ID =" + value;
+
+            String yeniAdres = mAdressPane.getText();
+            System.out.println(value + yeniAdres);
+            PreparedStatement ps = con.prepareStatement(q);
+            ps.setString(1, yeniAdres);
+            ps.executeUpdate();
+            DefaultTableModel tableModel = (DefaultTableModel) customerTable.getModel();
+            tableModel.setRowCount(0);
+            showMusteri();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_adresGuncButtonActionPerformed
+
+    private void mEkleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mEkleBtnActionPerformed
+        // TODO add your handling code here:
+        String adres = mAdressPane.getText();
+        int ym = 0;
+        boolean yd = false;
+        double km = 0;
+        int im = Integer.parseInt(mQuanPane.getText());
+
+        if (adres.contains("istanbul")) {
+            ym = 111;
+            yd = false;
+            km = 111 * 0.5;
+        } else if (adres.contains("ankara")) {
+            ym = 342;
+            yd = false;
+            km = 342 * 0.5;
+        } else if (adres.contains("eskisehir")) {
+            ym = 214;
+            yd = false;
+            km = 214 * 0.5;
+        } else if (adres.contains("gaziantep")) {
+            ym = 1000;
+            yd = false;
+            km = 1000 * 0.5;
+        } else if (adres.contains("londra")) {
+            ym = 2582;
+            yd = true;
+            km = 2582;
+        } else if (adres.contains("berlin")) {
+            ym = 1809;
+            yd = true;
+            km = 1809;
+        } else if (adres.contains("saraybosna")) {
+            ym = 1008;
+            yd = true;
+            km = 1008;
+        }
+        int toplamM = im + (int) km;
+        int sfiyati = toplamM * 6 / 5;
+        int sonSiparis = 0;
+        int urunid = 0, urunStok = 0;
+        System.out.println(km + "->km" + im + "-" + toplamM);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
+                "root", "");
+
+            String query = "SELECT `ID` FROM `siparis` WHERE 1";
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while (rs.next()) {
+                sonSiparis = rs.getInt(1);
+            }
+            System.out.println(sonSiparis);
+            statement.close();
+            rs.close();
+
+            query = "select urunler.ID from urunler where urunler.urunAd = " + "'" + mProductPane.getText() + "'";
+            statement = con.createStatement();
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
+                urunid = rs.getInt(1);
+            }
+
+            statement.close();
+            rs.close();
+
+            query = "select urunler.stok from urunler where urunler.ID = " + urunid;
+            statement = con.createStatement();
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
+                urunStok = rs.getInt(1);
+            }
+
+            statement.close();
+            rs.close();
+
+            int sAdet = Integer.parseInt(mQuanPane.getText());
+            if (urunStok >= sAdet) {
+
+                String q = "INSERT INTO `musteri`(`ID`, `musteriAdi`, `adres`) VALUES (?, ?, ?)";
+                PreparedStatement pst = con.prepareStatement(q);
+
+                int tempInt = Integer.parseInt(mIdPane.getText());
+                pst.setInt(1, tempInt);
+                pst.setString(2, mNamePane.getText());
+                pst.setString(3, mAdressPane.getText());
+                pst.executeUpdate();
+                pst.close();
+                q = "INSERT INTO `siparis`(`ID`, `urunID`, `musteriID`, `urunAdet`,"
+                + " `isciMaliyet`, `toplamMaliyet`, `satisFiyati`)"
+                + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+                pst = con.prepareStatement(q);
+                sonSiparis += 1;
+                pst.setInt(1, sonSiparis);
+                pst.setInt(2, urunid);
+                pst.setInt(3, tempInt);
+                tempInt = Integer.parseInt(mQuanPane.getText());
+                pst.setInt(4, tempInt);
+                pst.setInt(5, im);
+                pst.setInt(6, toplamM);
+                pst.setInt(7, sfiyati);
+                pst.executeUpdate();
+
+                q = "update urunler set urunler.stok = ? where urunler.ID = " + urunid;
+                pst = con.prepareStatement(q);
+                int stokSon = urunStok - tempInt;
+                pst.setInt(1, stokSon);
+                pst.executeUpdate();
+
+                tablolariGuncelle();
+            } else {
+                String q = "INSERT INTO `musteri`(`ID`, `musteriAdi`, `adres`) VALUES (?, ?, ?)";
+                PreparedStatement pst = con.prepareStatement(q);
+
+                int tempInt = Integer.parseInt(mIdPane.getText());
+                pst.setInt(1, tempInt);
+                pst.setString(2, mNamePane.getText());
+                pst.setString(3, mAdressPane.getText());
+                pst.executeUpdate();
+                pst.close();
+                q = "INSERT INTO `siparis`(`ID`, `urunID`, `musteriID`, `urunAdet`,"
+                + " `isciMaliyet`, `toplamMaliyet`, `satisFiyati`)"
+                + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+                pst = con.prepareStatement(q);
+                sonSiparis += 1;
+                pst.setInt(1, sonSiparis);
+                pst.setInt(2, urunid);
+                pst.setInt(3, tempInt);
+                tempInt = Integer.parseInt(mQuanPane.getText());
+                pst.setInt(4, tempInt);
+                pst.setInt(5, im);
+                pst.setInt(6, toplamM);
+                pst.setInt(7, sfiyati);
+                pst.executeUpdate();
+
+                tedarikcidenHammaddeAl(mProductPane.getText(), Integer.parseInt(mQuanPane.getText()));
+
+                pst = con.prepareStatement(query);
+                query = "update urunler set urunler.stok = ? where urunAd = "+"'"+mProductPane.getText()+"'";
+                pst = con.prepareStatement(query);
+                int stokSon = 0;
+                pst.setInt(1, stokSon);
+                pst.executeUpdate();
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        tablolariGuncelle();
+    }//GEN-LAST:event_mEkleBtnActionPerformed
+
+    private void customerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerTableMouseClicked
+        // TODO add your handling code here:
+        int rowCount = customerTable.getSelectedRow();
+        TableModel model = customerTable.getModel();
+
+        mIdPane.setText(model.getValueAt(rowCount, 0).toString());
+        mNamePane.setText(model.getValueAt(rowCount, 1).toString());
+        mAdressPane.setText(model.getValueAt(rowCount, 2).toString());
+        mProductPane.setText(model.getValueAt(rowCount, 3).toString());
+        mQuanPane.setText(model.getValueAt(rowCount, 4).toString());
+    }//GEN-LAST:event_customerTableMouseClicked
+
+    private void olusturBilesenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_olusturBilesenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_olusturBilesenActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) tedTable.getModel();
+        tableModel.setRowCount(0);
+        showTed();
+        stokKontrol();
+        System.out.println("Tablo güncellendi.");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void tedTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tedTableMouseClicked
+        // TODO add your handling code here:
+        int rowCount = tedTable.getSelectedRow();
+        TableModel model = tedTable.getModel();
+        idpane.setText(model.getValueAt(rowCount, 0).toString());
+        fnamepane.setText(model.getValueAt(rowCount, 1).toString());
+        countrypane.setText(model.getValueAt(rowCount, 2).toString());
+        String city = model.getValueAt(rowCount, 3).toString();
+
+        switch (city) {
+            case "Ankara":
+            citypane.setSelectedIndex(0);
+            break;
+            case "Eskisehir":
+            citypane.setSelectedIndex(1);
+            break;
+            case "Gaziantep":
+            citypane.setSelectedIndex(2);
+            break;
+            case "Istanbul":
+            citypane.setSelectedIndex(3);
+            break;
+            case "Londra":
+            citypane.setSelectedIndex(4);
+            break;
+            case "Berlin":
+            citypane.setSelectedIndex(5);
+            break;
+            case "Saraybosna":
+            citypane.setSelectedIndex(6);
+            break;
+
+        }
+        productpane.setText(model.getValueAt(rowCount, 4).toString());
+        quantitypane.setText(model.getValueAt(rowCount, 5).toString());
+        datepane.setText(model.getValueAt(rowCount, 6).toString());
+        lifepane.setText(model.getValueAt(rowCount, 7).toString());
+        pricepane.setText(model.getValueAt(rowCount, 8).toString());
+        switch (city) {
+            case "Ankara":
+            yolMaliyeti.setText("171");
+            break;
+            case "Eskisehir":
+            yolMaliyeti.setText("107");
+            break;
+            case "Gaziantep":
+            yolMaliyeti.setText("500");
+            break;
+            case "Istanbul":
+            yolMaliyeti.setText("55");
+            break;
+            case "Londra":
+            yolMaliyeti.setText("2582");
+            break;
+            case "Berlin":
+            yolMaliyeti.setText("1809");
+            break;
+            case "Saraybosna":
+            yolMaliyeti.setText("1008");
+            break;
+
+        }
+        
+    }//GEN-LAST:event_tedTableMouseClicked
 
     private void tedEkleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tedEkleButtonActionPerformed
         // TODO add your handling code here:
@@ -760,11 +983,35 @@ public class NewJFrame extends javax.swing.JFrame {
             uretilenHammadde = 6;
         }
 
+        String adres = citypane.getSelectedItem().toString();
+
+        if (adres.contains("istanbul")) {
+
+            yolm = 111 * 0.5;
+        } else if (adres.contains("ankara")) {
+
+            yolm = 342 * 0.5;
+        } else if (adres.contains("eskisehir")) {
+
+            yolm = 214 * 0.5;
+        } else if (adres.contains("gaziantep")) {
+
+            yolm = 1000 * 0.5;
+        } else if (adres.contains("londra")) {
+
+            yolm = 2582;
+        } else if (adres.contains("berlin")) {
+
+            yolm = 1809;
+        } else if (adres.contains("saraybosna")) {
+            yolm = 1008;
+        }
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
-                    "root", "");
+                "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
+                "root", "");
 
             String q = "Select tedhammadde.ID FROM tedhammadde";
             Statement statement = con.createStatement();
@@ -774,6 +1021,16 @@ public class NewJFrame extends javax.swing.JFrame {
             }
 
             System.out.println(sonTedHammadde);
+            statement.close();
+            rs.close();
+            
+            int tedarikcid = 0;
+            q = "Select ID from tedarikci";
+            statement = con.createStatement();
+            rs = statement.executeQuery(q);
+            while (rs.next()) {
+                tedarikcid = rs.getInt(1);
+            }
             statement.close();
             rs.close();
 
@@ -789,7 +1046,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
             sonTedHammadde += 1;
             insertquery = "INSERT INTO `tedhammadde`(`ID`, `uretenFirmaID`, `hammaddeID`, `stok`, `fiyat`, `uretimTarihi`, `rafomru`)"
-                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?)";
+            + " VALUES ( ?, ?, ?, ?, ?, ?, ?)";
             pst = con.prepareStatement(insertquery);
 
             pst.setInt(1, sonTedHammadde);
@@ -797,6 +1054,7 @@ public class NewJFrame extends javax.swing.JFrame {
             pst.setInt(3, uretilenHammadde);
             tempInt = Integer.parseInt(quantitypane.getText());
             pst.setInt(4, tempInt);
+            iscim = tempInt;
             tempInt = Integer.parseInt(pricepane.getText());
             pst.setInt(5, tempInt);
             pst.setString(6, datepane.getText());
@@ -821,237 +1079,392 @@ public class NewJFrame extends javax.swing.JFrame {
 
         } catch (SQLIntegrityConstraintViolationException ex) {
             JOptionPane.showMessageDialog(null, ex);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
         }
-
     }//GEN-LAST:event_tedEkleButtonActionPerformed
 
-    private void tedTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tedTableMouseClicked
-        // TODO add your handling code here:
-        int rowCount = tedTable.getSelectedRow();
-        TableModel model = tedTable.getModel();
-        idpane.setText(model.getValueAt(rowCount, 0).toString());
-        fnamepane.setText(model.getValueAt(rowCount, 1).toString());
-        countrypane.setText(model.getValueAt(rowCount, 2).toString());
-        String city = model.getValueAt(rowCount, 3).toString();
+    private void olusturButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_olusturButtonActionPerformed
+        String bilesen = olusturBilesen.getText();
+        String sadet = olusturMiktar.getText();
+        System.out.println(bilesen + " - "+ sadet);
+        int adet = Integer.parseInt(sadet);
+        tedarikcidenHammaddeAl(bilesen, adet);
+        tablolariGuncelle();
+    }//GEN-LAST:event_olusturButtonActionPerformed
+    double yolm = 0;
+    int iscim = 0;
+    //Splitter: String i - lara göre array a böler
+    public static String[] splitter(String str) {
+        String data[] = str.split("-");
+        return data;
+    }
 
-        switch (city) {
-            case "Ankara":
-                citypane.setSelectedIndex(0);
-                break;
-            case "Eskisehir":
-                citypane.setSelectedIndex(1);
-                break;
-            case "Gaziantep":
-                citypane.setSelectedIndex(2);
-                break;
-            case "Istanbul":
-                citypane.setSelectedIndex(3);
-                break;
-            case "Londra":
-                citypane.setSelectedIndex(4);
-                break;
-            case "Berlin":
-                citypane.setSelectedIndex(5);
-                break;
-            case "Saraybosna":
-                citypane.setSelectedIndex(6);
-                break;
+    //Splitter: String i bilesenlere göre array a böler
+    public static String[] splitter1(String str) {
+        String data[] = str.split("\\.");
+        return data;
+    }
+
+    private void tedarikcidenHammaddeAl(String bilesen, int sAdet) {
+
+        System.out.println("Tedarikciden hammadde satın alınıyor");
+
+        int sAlinacakhadeti, sAlinacakhadeti1, sAlinacakhadeti3;
+
+        String[] bilesenArray = splitter(bilesen);
+        if (bilesenArray.length == 2) {
+
+            String[] ham = splitter1(bilesenArray[0]);
+            System.out.println("bilesenArray[0]  --> " + bilesenArray[0]);
+            String ham1 = ham[0];
+            int adet = Integer.parseInt(ham[1]);
+
+            String[] h2 = splitter1(bilesenArray[1]);
+            String ham2 = h2[0];
+            int adet2 = Integer.parseInt(h2[1]);
+
+            sAlinacakhadeti = adet * sAdet;
+            sAlinacakhadeti1 = adet2 * sAdet;
+
+            String uhm = ham1;
+            int uretilenHammadde = 0;
+            if (uhm.equalsIgnoreCase("H")) {
+                uretilenHammadde = 1;
+            } else if (uhm.equalsIgnoreCase("N")) {
+                uretilenHammadde = 2;
+            } else if (uhm.equalsIgnoreCase("C")) {
+                uretilenHammadde = 3;
+            } else if (uhm.equalsIgnoreCase("O")) {
+                uretilenHammadde = 4;
+            } else if (uhm.equalsIgnoreCase("S")) {
+                uretilenHammadde = 5;
+            } else if (uhm.equalsIgnoreCase("Cl")) {
+                uretilenHammadde = 6;
+            }
+
+            String uhm2 = ham2;
+            int uretilenHammadde2 = 0;
+            if (uhm2.equalsIgnoreCase("H")) {
+                uretilenHammadde2 = 1;
+            } else if (uhm2.equalsIgnoreCase("N")) {
+                uretilenHammadde2 = 2;
+            } else if (uhm2.equalsIgnoreCase("C")) {
+                uretilenHammadde2 = 3;
+            } else if (uhm2.equalsIgnoreCase("O")) {
+                uretilenHammadde2 = 4;
+            } else if (uhm2.equalsIgnoreCase("S")) {
+                uretilenHammadde2 = 5;
+            } else if (uhm2.equalsIgnoreCase("Cl")) {
+                uretilenHammadde2 = 6;
+            }
+            int urunStok = 0;
+            try {
+
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey", "root", "");
+                String uretilenh = "" + uretilenHammadde;
+
+                String query = "SELECT tedhammadde.uretenFirmaID FROM tedhammadde WHERE tedhammadde.hammaddeID = "+uretilenHammadde +" ORDER BY tedhammadde.fiyat";
+                Statement s = con.createStatement();
+                ResultSet rs = s.executeQuery(query);
+                int firmaid = 0;
+                while (rs.next()) {
+                    firmaid = rs.getInt(1);
+                }
+                s.close();
+                rs.close();
+
+                query = "select tedhammadde.stok from tedhammadde where uretenFirmaID = " + firmaid + " AND tedhammadde.hammaddeID = " + uretilenHammadde;
+                s = con.createStatement();
+                rs = s.executeQuery(query);
+                while (rs.next()) {
+                    urunStok = rs.getInt(1);
+                }
+
+                s.close();
+                rs.close();
+
+                query = "update tedhammadde set tedhammadde.stok = ? where uretenFirmaID = " + firmaid + " AND hammaddeID = " + uretilenHammadde;
+                PreparedStatement pst = con.prepareStatement(query);
+                int stokSon = urunStok - sAlinacakhadeti;
+                pst.setInt(1, stokSon);
+                pst.executeUpdate();
+
+                //urun iki
+                query = "SELECT `uretenFirmaID` FROM tedhammadde WHERE hammaddeID =" + uretilenHammadde2 + " ORDER BY fiyat DESC";
+                s = con.createStatement();
+                rs = s.executeQuery(query);
+                firmaid = 0;
+                while (rs.next()) {
+                    firmaid = rs.getInt(1);
+                }
+                s.close();
+                rs.close();
+
+                query = "select tedhammadde.stok from tedhammadde where uretenFirmaID = " + firmaid + " AND hammaddeID = " + uretilenHammadde2;
+                s = con.createStatement();
+                rs = s.executeQuery(query);
+                while (rs.next()) {
+                    urunStok = rs.getInt(1);
+                }
+
+                s.close();
+                rs.close();
+
+                query = "update tedhammadde set tedhammadde.stok = ? where uretenFirmaID = " + firmaid + " AND hammaddeID = " + uretilenHammadde2;
+                pst = con.prepareStatement(query);
+                stokSon = urunStok - sAlinacakhadeti1;
+                pst.setInt(1, stokSon);
+                pst.executeUpdate();
+
+                bilesenOlustur(bilesen, sAdet);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else if (bilesenArray.length == 3) {
+            String[] ham = splitter1(bilesenArray[0]);
+            System.out.println("bilesenArray[0]  --> " + bilesenArray[0]);
+            String ham1 = ham[0];
+            int adet = Integer.parseInt(ham[1]);
+
+            String[] h2 = splitter1(bilesenArray[1]);
+            String ham2 = h2[0];
+            int adet2 = Integer.parseInt(h2[1]);
+            
+            String[] h3 = splitter1(bilesenArray[2]);
+            String ham3 = h3[0];
+            int adet3 = Integer.parseInt(h3[1]);
+            
+            sAlinacakhadeti = adet * sAdet;
+            sAlinacakhadeti1 = adet2 * sAdet;
+            sAlinacakhadeti3 = adet3 * sAdet;
+
+            String uhm = ham1;
+            int uretilenHammadde = 0;
+            if (uhm.equalsIgnoreCase("H")) {
+                uretilenHammadde = 1;
+            } else if (uhm.equalsIgnoreCase("N")) {
+                uretilenHammadde = 2;
+            } else if (uhm.equalsIgnoreCase("C")) {
+                uretilenHammadde = 3;
+            } else if (uhm.equalsIgnoreCase("O")) {
+                uretilenHammadde = 4;
+            } else if (uhm.equalsIgnoreCase("S")) {
+                uretilenHammadde = 5;
+            } else if (uhm.equalsIgnoreCase("Cl")) {
+                uretilenHammadde = 6;
+            }
+
+            String uhm2 = ham2;
+            int uretilenHammadde2 = 0;
+            if (uhm2.equalsIgnoreCase("H")) {
+                uretilenHammadde2 = 1;
+            } else if (uhm2.equalsIgnoreCase("N")) {
+                uretilenHammadde2 = 2;
+            } else if (uhm2.equalsIgnoreCase("C")) {
+                uretilenHammadde2 = 3;
+            } else if (uhm2.equalsIgnoreCase("O")) {
+                uretilenHammadde2 = 4;
+            } else if (uhm2.equalsIgnoreCase("S")) {
+                uretilenHammadde2 = 5;
+            } else if (uhm2.equalsIgnoreCase("Cl")) {
+                uretilenHammadde2 = 6;
+            }
+            
+            String uhm3 = ham3;
+            int uretilenHammadde3 = 0;
+            if (uhm3.equalsIgnoreCase("H")) {
+                uretilenHammadde3 = 1;
+            } else if (uhm3.equalsIgnoreCase("N")) {
+                uretilenHammadde3 = 2;
+            } else if (uhm3.equalsIgnoreCase("C")) {
+                uretilenHammadde3 = 3;
+            } else if (uhm3.equalsIgnoreCase("O")) {
+                uretilenHammadde3 = 4;
+            } else if (uhm3.equalsIgnoreCase("S")) {
+                uretilenHammadde3 = 5;
+            } else if (uhm3.equalsIgnoreCase("Cl")) {
+                uretilenHammadde3 = 6;
+            }
+            
+            int urunStok = 0;
+            try {
+
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey", "root", "");
+                String uretilenh = "" + uretilenHammadde;
+
+                String query = "SELECT tedhammadde.uretenFirmaID FROM tedhammadde WHERE tedhammadde.hammaddeID = "+uretilenHammadde +" ORDER BY tedhammadde.fiyat";
+                Statement s = con.createStatement();
+                ResultSet rs = s.executeQuery(query);
+                int firmaid = 0;
+                while (rs.next()) {
+                    firmaid = rs.getInt(1);
+                }
+                s.close();
+                rs.close();
+
+                query = "select tedhammadde.stok from tedhammadde where uretenFirmaID = " + firmaid + " AND tedhammadde.hammaddeID = " + uretilenHammadde;
+                s = con.createStatement();
+                rs = s.executeQuery(query);
+                while (rs.next()) {
+                    urunStok = rs.getInt(1);
+                }
+
+                s.close();
+                rs.close();
+
+                query = "update tedhammadde set tedhammadde.stok = ? where uretenFirmaID = " + firmaid + " AND hammaddeID = " + uretilenHammadde;
+                PreparedStatement pst = con.prepareStatement(query);
+                int stokSon = urunStok - sAlinacakhadeti;
+                pst.setInt(1, stokSon);
+                pst.executeUpdate();
+
+                //urun iki
+                query = "SELECT `uretenFirmaID` FROM tedhammadde WHERE hammaddeID =" + uretilenHammadde2 + " ORDER BY fiyat DESC";
+                s = con.createStatement();
+                rs = s.executeQuery(query);
+                firmaid = 0;
+                while (rs.next()) {
+                    firmaid = rs.getInt(1);
+                }
+                s.close();
+                rs.close();
+
+                query = "select tedhammadde.stok from tedhammadde where uretenFirmaID = " + firmaid + " AND hammaddeID = " + uretilenHammadde2;
+                s = con.createStatement();
+                rs = s.executeQuery(query);
+                while (rs.next()) {
+                    urunStok = rs.getInt(1);
+                }
+
+                s.close();
+                rs.close();
+
+                query = "update tedhammadde set tedhammadde.stok = ? where uretenFirmaID = " + firmaid + " AND hammaddeID = " + uretilenHammadde2;
+                pst = con.prepareStatement(query);
+                stokSon = urunStok - sAlinacakhadeti1;
+                pst.setInt(1, stokSon);
+                pst.executeUpdate();
+
+                //urun üç
+                query = "SELECT `uretenFirmaID` FROM tedhammadde WHERE hammaddeID =" + uretilenHammadde3 + " ORDER BY fiyat DESC";
+                s = con.createStatement();
+                rs = s.executeQuery(query);
+                firmaid = 0;
+                while (rs.next()) {
+                    firmaid = rs.getInt(1);
+                }
+                s.close();
+                rs.close();
+
+                query = "select tedhammadde.stok from tedhammadde where uretenFirmaID = " + firmaid + " AND hammaddeID = " + uretilenHammadde3;
+                s = con.createStatement();
+                rs = s.executeQuery(query);
+                while (rs.next()) {
+                    urunStok = rs.getInt(1);
+                }
+
+                s.close();
+                rs.close();
+
+                query = "update tedhammadde set tedhammadde.stok = ? where uretenFirmaID = " + firmaid + " AND hammaddeID = " + uretilenHammadde3;
+                pst = con.prepareStatement(query);
+                stokSon = urunStok - sAlinacakhadeti1;
+                pst.setInt(1, stokSon);
+                pst.executeUpdate();
+
+                
+                bilesenOlustur(bilesen, sAdet);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }
-        productpane.setText(model.getValueAt(rowCount, 4).toString());
-        quantitypane.setText(model.getValueAt(rowCount, 5).toString());
-        datepane.setText(model.getValueAt(rowCount, 6).toString());
-        lifepane.setText(model.getValueAt(rowCount, 7).toString());
-        pricepane.setText(model.getValueAt(rowCount, 8).toString());
 
+    }
 
-    }//GEN-LAST:event_tedTableMouseClicked
-
-    private void customerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerTableMouseClicked
-        // TODO add your handling code here:
-        int rowCount = customerTable.getSelectedRow();
-        TableModel model = customerTable.getModel();
-
-        mIdPane.setText(model.getValueAt(rowCount, 0).toString());
-        mNamePane.setText(model.getValueAt(rowCount, 1).toString());
-        mAdressPane.setText(model.getValueAt(rowCount, 2).toString());
-        mProductPane.setText(model.getValueAt(rowCount, 3).toString());
-        mQuanPane.setText(model.getValueAt(rowCount, 4).toString());
-
-    }//GEN-LAST:event_customerTableMouseClicked
-
-    private void mEkleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mEkleBtnActionPerformed
-        // TODO add your handling code here:
-        String adres = mAdressPane.getText();
-        int ym = 0;
-        boolean yd = false;
-        double km = 0;
-        int im = Integer.parseInt(mQuanPane.getText());
+    public void bilesenOlustur(String bilesen, int sAdet) {
+        System.out.println("bileşen oluşturuluyor");
         
+        System.out.println(bilesen);
         
-        if (adres.contains("istanbul")){
-            ym = 111;
-            yd =false;
-            km = 111*0.5;
-        }
-        else if (adres.contains("ankara")){
-            ym = 342;
-            yd =false;
-            km = 342 * 0.5;
-        }
-        else if (adres.contains("eskisehir")){
-            ym = 214;
-            yd =false;
-            km = 214 * 0.5;
-        }
-        else if (adres.contains("gaziantep")){
-            ym = 1000;
-            yd =false;
-            km = 1000 * 0.5;
-        }
-        else if (adres.contains("londra")){
-            ym = 2582;
-            yd = true;
-            km = 2582;
-        }
-        else if (adres.contains("berlin")){
-            ym = 1809;
-            yd =true;
-            km = 1809;
-        }
-        else if (adres.contains("saraybosna")){
-            ym = 1008;
-            yd =true;
-            km = 1008;
-        }
-        int toplamM = im + (int)km;
-        int sfiyati = toplamM * (6/5);
-        int sonSiparis = 0;
-        int urunid = 0, urunStok = 0;
-        System.out.println(km+"->km"+im+"-"+toplamM);
+        int bilid = 0, urunid = 0;
         try {
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
                     "root", "");
-            
-            String query = "SELECT `ID` FROM `siparis` WHERE 1";
+
+            String query = "SELECT `ID` FROM `urunler` WHERE urunAd = " +"'"+bilesen+"'";
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
-                sonSiparis = rs.getInt(1);
+                bilid = rs.getInt(1);
             }
-            System.out.println(sonSiparis);
-            statement.close();
-            rs.close();
-            
-            query = "select urunler.ID from urunler where urunler.urunAd = " + "'"+mProductPane.getText()+"'";
-            statement = con.createStatement();
-            rs = statement.executeQuery(query);
-            while (rs.next()) {
-                urunid = rs.getInt(1);
-            }
-            
-            statement.close();
-            rs.close();
-            
-            query = "select urunler.stok from urunler where urunler.ID = " + urunid;
-            statement = con.createStatement();
-            rs = statement.executeQuery(query);
-            while (rs.next()) {
-                urunStok = rs.getInt(1);
-            }
-            
+
             statement.close();
             rs.close();
 
-            String q = "INSERT INTO `musteri`(`ID`, `musteriAdi`, `adres`) VALUES (?, ?, ?)";
-            PreparedStatement pst = con.prepareStatement(q);
-            
-            int tempInt = Integer.parseInt(mIdPane.getText());
-            pst.setInt(1, tempInt);
-            pst.setString(2, mNamePane.getText());
-            pst.setString(3, mAdressPane.getText());
-            pst.executeUpdate();
-            pst.close();
-            q = "INSERT INTO `siparis`(`ID`, `urunID`, `musteriID`, `urunAdet`,"
-                    + " `isciMaliyet`, `toplamMaliyet`, `satisFiyati`)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
-            pst = con.prepareStatement(q);
-            sonSiparis+=1;
-            pst.setInt(1, sonSiparis);
-            pst.setInt(2, urunid);
-            pst.setInt(3, tempInt);
-            tempInt = Integer.parseInt(mQuanPane.getText());
-            pst.setInt(4, tempInt);
-            pst.setInt(5, im);
-            pst.setInt(6, toplamM);
-            pst.setInt(7, sfiyati);
-            pst.executeUpdate();
-            
-            q = "update urunler set urunler.stok = ? where urunler.ID = " +urunid;
-            pst = con.prepareStatement(q);
-            int stokSon = urunStok - tempInt;
-            pst.setInt(1, stokSon);
-            pst.executeUpdate();
-            
-            DefaultTableModel tableModel = (DefaultTableModel) customerTable.getModel();
-            tableModel.setRowCount(0);
-            DefaultTableModel model = (DefaultTableModel) siparisTable.getModel();
-            model.setRowCount(0);
-            
-            showSiparis();
-            showMusteri();
+            if (bilid == 0) {
+
+                query = "SELECT `ID` FROM `urunler` WHERE 1";
+                statement = con.createStatement();
+                rs = statement.executeQuery(query);
+                while (rs.next()) {
+                    urunid = rs.getInt(1);
+                }
+
+                statement.close();
+                rs.close();
+
+                query = "INSERT INTO `urunler`(`ID`, `ureticiID`, `urunAd`, `stok`, `uretimTarihi`, `rafOmru`) VALUES (?, ?, ?, ?, ?, ?)";
+                PreparedStatement pst = con.prepareStatement(query);
+                urunid += 1;
+                pst.setInt(1, urunid);
+                pst.setInt(2, 1);
+                pst.setString(3, bilesen);
+                pst.setInt(4, sAdet);
+                pst.setString(5, "22052019");
+                pst.setInt(6, 5);
+
+                pst.executeUpdate();
+                pst.close();
+            } else {
+                int urunStok = 0;
+                query = "select urunler.stok from urunler where urunler.ID = " + bilid;
+                statement = con.createStatement();
+                rs = statement.executeQuery(query);
+                while (rs.next()) {
+                    urunStok = rs.getInt(1);
+                }
+
+                statement.close();
+                rs.close();
+
+                PreparedStatement pst = con.prepareStatement(query);
+                query = "update urunler set urunler.stok = ? where urunler.ID = " + bilid;
+                pst = con.prepareStatement(query);
+                int stokSon = urunStok + sAdet;
+                pst.setInt(1, stokSon);
+                pst.executeUpdate();
+                
+                
+                
+                System.out.println("Bileşen oluşturuldu");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-    }//GEN-LAST:event_mEkleBtnActionPerformed
-
-    private void siparisTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siparisTableMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_siparisTableMouseClicked
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void adresGuncButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adresGuncButtonActionPerformed
-        // TODO add your handling code here:
-        try {
-
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey", "root", "");
-            int sRow = customerTable.getSelectedRow();
-            String value = (customerTable.getModel().getValueAt(sRow, 0).toString());
-            String q = "Update musteri set musteri.adres = ? where musteri.ID =" + value;
-            
-            String yeniAdres = mAdressPane.getText();
-            System.out.println(value + yeniAdres);
-            PreparedStatement ps = con.prepareStatement(q);
-            ps.setString(1, yeniAdres);
-            ps.executeUpdate();
-            DefaultTableModel tableModel = (DefaultTableModel) customerTable.getModel();
-            tableModel.setRowCount(0);
-            showMusteri();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }//GEN-LAST:event_adresGuncButtonActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel tableModel = (DefaultTableModel) tedTable.getModel();
-        tableModel.setRowCount(0);
-        showTed();
-    }//GEN-LAST:event_jButton5ActionPerformed
+        tablolariGuncelle();
+    }
 
     /**
      * @param args the command line arguments
@@ -1088,6 +1501,38 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
     }
+    public void tablolariGuncelle(){
+        
+        DefaultTableModel tableModel = null;
+        tableModel = (DefaultTableModel) tedTable.getModel();
+        tableModel.setRowCount(0);
+        tableModel = (DefaultTableModel) uStokTable.getModel();
+        tableModel.setRowCount(0);
+        tableModel = (DefaultTableModel) siparisTable.getModel();
+        tableModel.setRowCount(0);
+        tableModel = (DefaultTableModel) customerTable.getModel();
+        tableModel.setRowCount(0);
+        
+        stokKontrol();
+        
+        showTed();
+        showMusteri();
+        showStokTable();
+        showSiparis();
+    }
+    public void stokKontrol() {
+        String query = "DELETE FROM `tedhammadde` WHERE stok <= 0";
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
+                    "root", "");
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public ArrayList<Ted> tedList() {
         ArrayList<Ted> tedList = new ArrayList<>();
@@ -1098,7 +1543,8 @@ public class NewJFrame extends javax.swing.JFrame {
                     "root", "");
             String query1 = "SELECT tedarikci.ID, tedarikci.firmaAdi, tedarikci.ulke, tedarikci.sehir, hammadde.isim,"
                     + " tedhammadde.stok, tedhammadde.uretimTarihi, tedhammadde.rafomru, tedhammadde.fiyat FROM tedhammadde "
-                    + "INNER JOIN hammadde ON tedhammadde.hammaddeID = hammadde.ID INNER JOIN tedarikci ON tedhammadde.uretenFirmaID = tedarikci.ID";
+                    + "INNER JOIN hammadde ON tedhammadde.hammaddeID = hammadde.ID INNER JOIN tedarikci ON tedhammadde.uretenFirmaID = tedarikci.ID"
+                    + " Where tedhammadde.stok > 0  Order By hammadde.isim";
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(query1);
             Ted ted;
@@ -1124,7 +1570,9 @@ public class NewJFrame extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/dbprolab?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
                     "root", "");
-            String query1 = "SELECT musteri.ID, musteri.musteriAdi, musteri.adres, urunler.urunAd,siparis.urunAdet FROM siparis, musteri, urunler WHERE siparis.musteriID = musteri.ID AND siparis.urunID = urunler.ID";
+            String query1 = "SELECT musteri.ID, musteri.musteriAdi, musteri.adres, urunler.urunAd,siparis.urunAdet FROM siparis, musteri, urunler "
+                    + "WHERE siparis.musteriID = musteri.ID AND siparis.urunID = urunler.ID"
+                    + " Order By musteri.ID";
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(query1);
             Musteri med;
@@ -1139,7 +1587,7 @@ public class NewJFrame extends javax.swing.JFrame {
         }
         return mList;
     }
-
+/*
     public ArrayList<HamSatinAl> buyList() {
         ArrayList<HamSatinAl> hList = new ArrayList<>();
         try {
@@ -1149,7 +1597,8 @@ public class NewJFrame extends javax.swing.JFrame {
                     "root", "");
             String query = "SELECT tedarikci.firmaAdi, hammadde.isim, tedhammadde.stok,"
                     + " tedhammadde.fiyat FROM tedhammadde INNER JOIN hammadde"
-                    + " ON tedhammadde.hammaddeID = hammadde.ID INNER JOIN tedarikci ON tedhammadde.uretenFirmaID = tedarikci.ID";
+                    + " ON tedhammadde.hammaddeID = hammadde.ID INNER JOIN tedarikci ON tedhammadde.uretenFirmaID = tedarikci.ID"
+                    + " Order By hammadde.isim";
 
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(query);
@@ -1164,7 +1613,7 @@ public class NewJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
         return hList;
-    }
+    }*/
 
     public ArrayList<ureticiStok> stokList() {
         ArrayList<ureticiStok> uList = new ArrayList<>();
@@ -1201,7 +1650,7 @@ public class NewJFrame extends javax.swing.JFrame {
             tableModel.addRow(row);
         }
     }
-
+/*
     public void showbuyTable() {
         ArrayList<HamSatinAl> hamList = buyList();
         DefaultTableModel tableModel = (DefaultTableModel) hamAlTable.getModel();
@@ -1214,7 +1663,7 @@ public class NewJFrame extends javax.swing.JFrame {
             row[3] = hamList.get(i).getFiyat();
             tableModel.addRow(row);
         }
-    }
+    }*/
 
     public void showTed() {
         /*
@@ -1254,12 +1703,13 @@ public class NewJFrame extends javax.swing.JFrame {
             row[4] = mList.get(i).getQuanitity();
             tableModel.addRow(row);
         }
-        
+
     }
-    public void showSiparis () {
+
+    public void showSiparis() {
         ArrayList<Musteri> mList = musteriList();
         DefaultTableModel tableModel = (DefaultTableModel) siparisTable.getModel();
-        
+
         Object[] row = new Object[5];
         for (int i = 0; i < mList.size(); i++) {
             row[0] = mList.get(i).getId();
@@ -1297,16 +1747,12 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adresGuncButton;
-    private javax.swing.JTextPane buyTedPane;
     private javax.swing.JComboBox<String> citypane;
     private javax.swing.JTextPane countrypane;
     private javax.swing.JTable customerTable;
     private javax.swing.JTextPane datepane;
     private javax.swing.JTextPane fnamepane;
-    private javax.swing.JTable hamAlTable;
     private javax.swing.JTextPane idpane;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1316,15 +1762,13 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1347,12 +1791,9 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane21;
-    private javax.swing.JScrollPane jScrollPane22;
-    private javax.swing.JScrollPane jScrollPane23;
-    private javax.swing.JScrollPane jScrollPane24;
     private javax.swing.JScrollPane jScrollPane25;
-    private javax.swing.JScrollPane jScrollPane26;
-    private javax.swing.JScrollPane jScrollPane27;
+    private javax.swing.JScrollPane jScrollPane28;
+    private javax.swing.JScrollPane jScrollPane29;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -1361,14 +1802,11 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
-    private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextPane jTextPane4;
     private javax.swing.JTextPane jTextPane7;
-    private javax.swing.JTextPane jTextPane9;
     private javax.swing.JTextPane karPane;
+    private javax.swing.JTextPane karPane2;
     private javax.swing.JTextPane lifepane;
     private javax.swing.JTextPane mAdressPane;
     private javax.swing.JButton mEkleBtn;
@@ -1377,20 +1815,22 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel mPanel;
     private javax.swing.JTextPane mProductPane;
     private javax.swing.JTextPane mQuanPane;
-    private javax.swing.JTextPane maliyetPane;
+    private javax.swing.JTextField olusturBilesen;
+    private javax.swing.JButton olusturButton;
+    private javax.swing.JTextPane olusturMiktar;
     private javax.swing.JTextPane pricepane;
     private javax.swing.JTextPane productpane;
     private javax.swing.JTextPane quantitypane;
     private javax.swing.JPanel sPanel;
-    private javax.swing.JButton satinAlButton;
     private javax.swing.JTable siparisTable;
     private javax.swing.JPanel tPanel;
     private javax.swing.JButton tedEkleButton;
     private javax.swing.JTable tedTable;
     private javax.swing.JPanel uPanel;
-    private javax.swing.JPanel uSatinAlPanel;
     private javax.swing.JTable uStokTable;
+    private javax.swing.JTextPane yolMaliyeti;
     // End of variables declaration//GEN-END:variables
+
 }
 
 class ureticiStok {
@@ -1412,7 +1852,7 @@ class ureticiStok {
     }
 
 }
-
+/*
 class HamSatinAl {
 
     private String firmaAdi, hamMadde;
@@ -1441,7 +1881,7 @@ class HamSatinAl {
         return fiyat;
     }
 
-}
+}*/
 
 class Musteri {
 
